@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #354F52;
+}
+
+header {
+    background: #52796F;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+.hero {
+    background: url('images/compuer-hero\,\ the.webp') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-text .cta {
+    padding: 10px 20px;
+    background: #84A98C;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.about, .services, .portfolio, .testimonials, .faq, .contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.service-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    padding: 20px;
+    border: 1px solid #CAD2C5;
+    border-radius: 5px;
+    flex: 1;
+    max-width: 300px;
+}
+
+.gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    width: 200px;
+    height: 200px;
+    background: #CAD2C5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+footer {
+    background: #354F52;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .socials {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Navbar */
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+}
+
+/* Testimonial Carousel */
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    height: 100px;
+}
+
+.testimonial {
+    flex: 0 0 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.testimonial.visible {
+    opacity: 1;
+}
