@@ -136,6 +136,10 @@ html {
     nav ul.show {
         display: flex;
     }
+    .service-cards {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* Testimonial Carousel */
@@ -148,10 +152,14 @@ html {
 
 .testimonial {
     flex: 0 0 100%;
+    transition : opacity 1s ease-in-out;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    display:none;
+
 }
 
 .testimonial.visible {
+    transition: opacity 1s ease-in-out;
     opacity: 1;
+    display:block;
 }
