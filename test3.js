@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         currentTestimonial = (currentTestimonial + 1) % testimonials.length;
         testimonials[currentTestimonial].classList.add('visible');
     }
-
-    setInterval(showNextTestimonial, 3000);
+    
+    setInterval(showNextTestimonial, 5000);
 
     // Form Validation
     const form = document.querySelector('form');
@@ -47,6 +47,24 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert('Your message has been sent successfully!');
             form.reset();
+        // On Scroll Animation
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+        function checkScrollAnimations() {
+            const triggerHeight = window.innerHeight * 0.8;
+    
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < triggerHeight) {
+                    element.classList.add('visible');
+                } else {
+                    element.classList.remove('visible');
+                }
+            });
+        }
+    
+        window.addEventListener('scroll', checkScrollAnimations);
+        checkScrollAnimations(); // Run on load to catch already visible elements
         }
     });
 });
