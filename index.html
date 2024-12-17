@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,9 +12,9 @@
 
 </head>
 
-<body>
-    <!-- Header -->
-    <header>
+<body class="cover">
+
+    <header class="fixed-header">
         <nav>
             <div class="logo">tetdevs+</div>
             <ul>
@@ -27,22 +27,20 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Your Dream Website Awaits</h1>
-            <p>We design stunning websites that elevate your brand.</p>
-            <a href="#contact" class="cta">Get Started</a>
-        </div>
-    </section>
+    <div class="cover-container">
+        <section class="hero" >
+            <div class="hero-text" class="cover-content">
+                <h1 >Your Dream Website Awaits</h1>
+                <p>We design stunning websites that elevate your brand.</p>
+                <a href="#contact" class="cta">Get Started</a>
+            </div>
+        </section>
+    </div>
 
-    <!-- About Us -->
     <section id="about" class="about">
         <h2>About Us</h2>
         <p>We are a team of passionate web developers committed to creating exceptional online experiences.</p>
     </section>
-
-    <!-- Services -->
     <section id="services" class="services">
         <h2>Our Services</h2>
         <div class="service-cards">
@@ -52,7 +50,6 @@
         </div>
     </section>
 
-    <!-- Portfolio -->
     <section id="portfolio" class="portfolio">
         <h2>Portfolio</h2>
         <div class="gallery">
@@ -63,7 +60,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <h2>What Our Clients Say</h2>
         <div class="carousel">
@@ -73,7 +69,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq" class="faq">
         <h2>Frequently Asked Questions</h2>
         <div class="question">
@@ -86,7 +81,6 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
         <form>
@@ -97,7 +91,6 @@
         <button type="submit">Send Message</button>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 tetdevs+. All rights reserved.</p>
         <ul class="socials">
@@ -108,5 +101,201 @@
     </footer>
 <script src="test3.js?v=1"></script>
 </body>
+<!-- nothing is here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TetDevs+ - Build Your Dream Website</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/tetrated.png">
+    <meta name="description" content="TetDevs+ - Professional Web Design and Development Services">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">tetdevs+</a>
+            <nav aria-label="Main Navigation">
+                <button class="mobile-nav-toggle" aria-expanded="false" aria-controls="main-menu">
+                    <!-- <span class="sr-only">Menu</span> -->
+                    <span class="hamburger-icon">☰</span>
+                </button>
+                <ul id="main-menu" class="nav-menu">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your Dream Website Awaits</h1>
+                <p>We design stunning websites that elevate your brand.</p>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="section about">
+            <div class="section-container">
+                <h2>About Us</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>We are a team of passionate web developers committed to creating exceptional online experiences. Our mission is to transform your digital vision into reality, combining cutting-edge design with robust functionality.</p>
+                    </div>
+                    <div class="about-skills">
+                        <h3>Our Expertise</h3>
+                        <ul>
+                            <li>Web Design</li>
+                            <li>Front-end Development</li>
+                            <li>Responsive Layouts</li>
+                            <li>SEO Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section services">
+            <div class="section-container">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>Custom Websites</h3>
+                        <p>Unique, tailored web solutions that reflect your brand's identity.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>SEO Optimization</h3>
+                        <p>Improve your website's visibility and ranking on search engines.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>E-commerce Solutions</h3>
+                        <p>Powerful online stores that drive sales and enhance user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section portfolio">
+            <div class="section-container">
+                <h2>Our Portfolio</h2>
+                <div class="portfolio-gallery">
+                    <div class="portfolio-item">
+                        <img src="images/dark.webp" alt="Project 3">
+                        <div class="project-overlay">
+                            <h3>E-commerce Platform</h3>
+                            <p>Responsive online store design</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="images/another_design.webp" alt="Project 2">
+                        <div class="project-overlay">
+                            <h3>Corporate Website</h3>
+                            <p>Clean, professional design</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <!-- <img src="images/compuer-hero, the.webp" alt="Project 1"> -->
+                        <div class="project-overlay">
+                            <h3>Personal Blog</h3>
+                            <p>Engaging content layout</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <!-- <img src="images/purple, accent.webp" alt="Project 4"> -->
+                        <div class="project-overlay">
+                            <h3>Restaurant Website</h3>
+                            <p>Appetizing digital presence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section testimonials">
+            <div class="section-container">
+                <h2>What Our Clients Say</h2>
+                <div class="testimonial-carousel">
+                    <div class="testimonial">
+                        <blockquote>
+                            <p>"TetDevs transformed our online presence. Absolutely amazing work!"</p>
+                            <footer>— Sarah Johnson, Marketing Director</footer>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial">
+                        <blockquote>
+                            <p>"Professional, creative, and incredibly responsive. Highly recommended!"</p>
+                            <footer>— Michael Chen, Startup Founder</footer>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial">
+                        <blockquote>
+                            <p>"Our new website has dramatically increased our online engagement."</p>
+                            <footer>— Elena Rodriguez, Small Business Owner</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="section-container">
+                <h2>Contact Us</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">tetdevs+</div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+            </div>
+            <p class="copyright">&copy; 2024 TetDevs+. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
