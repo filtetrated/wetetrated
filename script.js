@@ -233,7 +233,70 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    const heroCover = document.getElementById('hero-cover');
+    const heroContent = heroCover.querySelector('.hero-cover-content');
+    const fixedHeader = document.getElementById('fixed-header');
+    
+    // Initial state
+    fixedHeader.style.opacity = '0';
 
+    function updateHeaderTransformation() {
+        // Get scroll position and viewport height
+        const scrollPosition = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        
+        // Calculate progress (0 to 1)
+        const progress = Math.min(scrollPosition / viewportHeight, 1);
+        
+        // Transform hero cover based on scroll progress
+        const scaleValue = 1 - (progress * 0.3); // Scale from 1 to 0.7
+        const heightValue = 100 - (progress * 80); // Height from 100vh to 80px
+        
+        // Apply transformations
+        heroCover.style.transform = `scale(${scaleValue})`;
+        heroCover.style.opacity = 1 - progress;
+        heroCover.style.height = `${heightValue}vh`;
+        
+        // Transform hero content
+        heroContent.style.transform = `scale(${1 - progress * 0.5})`;
+        heroContent.style.opacity = 1 - progress;
+        
+        // Show/hide fixed header
+        fixedHeader.style.opacity = progress;
+    }
+
+    // Add scroll event listener with requestAnimationFrame for smooth animation
+    let ticking = false;
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateHeaderTransformation();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Initial call to set correct state
+    updateHeaderTransformation();
+});
+
+    // Optional: Existing smooth scrolling functionality
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
     // Testimonial Carousel
     const testimonials = document.querySelectorAll('.testimonial');
     let currentTestimonial = 0;
@@ -311,26 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scroll-Triggered Header Transformation
-    function handleHeaderScroll() {
-        const hero = document.querySelector('.hero');
-        const header = document.querySelector('.main-header');
-
-        if (hero && header) {
-            const heroHeight = hero.offsetHeight;
-            const scrollPosition = window.scrollY;
-
-            if (scrollPosition > heroHeight) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-    }
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleHeaderScroll);
-
+    
     // Portfolio Image Hover Effect
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     
@@ -349,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
+;
 
 // Optional: Performance Tracking
 window.addEventListener('load', () => {
