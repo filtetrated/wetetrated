@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Calculate progress (0 to 1)
         const progress = Math.min(scrollPosition / viewportHeight, 1);
+        fixedHeader.style.display = 'block'; // Ensure it's not 'none'
+        fixedHeader.style.visibility = 'visible'; // Ensure it's not 'hidden'
+        // Show/hide fixed header
+        fixedHeader.style.opacity = progress*2;
         
         // Transform hero cover based on scroll progress
         const scaleValue = 1 - (progress * 0.3); // Scale from 1 to 0.7
@@ -60,10 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Transform hero content
         heroContent.style.transform = `scale(${1 - progress * 0.5})`;
+        heroContent.style.transform = `scale(${1 - progress * 0.5})`;
         heroContent.style.opacity = 1 - progress;
-        
-        // Show/hide fixed header
-        fixedHeader.style.opacity = progress;
     }
 
     // Add scroll event listener with requestAnimationFrame for smooth animation
@@ -81,14 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial call to set correct state
     updateHeaderTransformation();
-});
-let timer;
-window.addEventListener('scroll', () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-        console.log('Scroll event triggered!');
-    }, 100);
-});
+    });
+    let timer;
+    window.addEventListener('scroll', () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            console.log('Scroll event triggered!');
+        }, 100);
+    });
 
 
     // Optional: Existing smooth scrolling functionality

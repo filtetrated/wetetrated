@@ -26,15 +26,6 @@ body {
 }
 
 
-/* Header Styles older one, sticky layout */
-/* .main-header {
-    position: fixed;
-    width: 100%;
-    background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 50;
-} */
-
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -42,6 +33,10 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px 20px;
+}
+.em {
+    position:fixed; 
+    bottom: 100px;
 }
 
 .logo {
@@ -85,12 +80,6 @@ body {
     color: var(--white);
     text-align: center;
 }
-
-.hero-content {
-    max-width: 800px;
-    padding: 0 20px;
-}
-
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 20px;
@@ -436,7 +425,7 @@ body {
     text-align: center;
     max-width: 800px;
     padding: 0 20px;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
 }
 
 .hero-cover-content h1 {
@@ -459,16 +448,12 @@ body {
     width: 100%;
     background-color: var(--white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transform: translateY(-100%);
+    transform: translateY(0px);
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
     z-index: 10;
 }
 
-.fixed-header.visible {
-    transform: translateY(0px);
-    opacity: 1;
-}
 
 /* Scrolled Hero Styles */
 /* .hero-cover {
@@ -485,5 +470,3 @@ body {
 #about {
     padding-top: 100px;
 }
-
-/* Remove or comment out any existing .main-header styles */
