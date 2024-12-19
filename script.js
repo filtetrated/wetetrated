@@ -281,6 +281,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial call to set correct state
     updateHeaderTransformation();
 });
+let timer;
+window.addEventListener('scroll', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+        console.log('Scroll event triggered!');
+    }, 100);
+});
+
 
     // Optional: Existing smooth scrolling functionality
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
