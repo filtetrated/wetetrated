@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const progress = Math.min(scrollPosition / viewportHeight, 1);
         fixedHeader.style.display = 'block'; // Ensure it's not 'none'
         fixedHeader.style.visibility = 'visible'; // Ensure it's not 'hidden'
-        // Show/hide fixed header
+        // Show/hide  header
         fixedHeader.style.opacity = progress*2;
         
         // Transform hero cover based on scroll progress
@@ -184,7 +184,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    function smoothScrollTo(targetId, duration = 1000) {
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+    
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        const startPosition = window.scrollY;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+    
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+    
+        function easeInOutQuad(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+    
+        requestAnimationFrame(animation);
+    }
+    
+    // Usage:
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            smoothScrollTo(targetId, 1000); // Set duration in milliseconds
+        });
+    });
+    
     
     // Portfolio Image Hover Effect
     const portfolioItems = document.querySelectorAll('.portfolio-item');
