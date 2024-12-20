@@ -16,6 +16,7 @@
 
     /* Typography */
     --font-primary: 'Poppins', sans-serif;
+    --font-secondary: sans-serif;
 }
 
 body {
@@ -284,6 +285,11 @@ body {
     resize: none;
 }
 
+input[type=text], [type=email], #message {
+    font-family: var(--font-secondary);
+    letter-spacing: 0.009rem;
+    font-size: 16px;
+}
 
 .submit-button {
     display: block;
