@@ -192,13 +192,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const startPosition = window.scrollY;
         const distance = targetPosition - startPosition;
         let startTime = null;
+        const disableScrollListener = () => {
+            window.removeEventListener('scroll', scrollHandler);
+        };
     
+        const enableScrollListener = () => {
+            window.addEventListener('scroll', scrollHandler);
+        };
         function animation(currentTime) {
             if (startTime === null) startTime = currentTime;
             const timeElapsed = currentTime - startTime;
             const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
             window.scrollTo(0, run);
-            if (timeElapsed < duration) requestAnimationFrame(animation);
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            } else {
+                // Re-enable scroll listener after animation completes
+                enableScrollListener();
+            }
         }
     
         function easeInOutQuad(t, b, c, d) {
@@ -207,8 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
             t--;
             return -c / 2 * (t * (t - 2) - 1) + b;
         }
-    
+        // Temporarily disable scroll listener
+        disableScrollListener();
         requestAnimationFrame(animation);
+        // Existing scroll handler (updateHeaderTransformation or other logic)
+    function scrollHandler() {
+        updateHeaderTransformation();
+        // Add scroll listener
+    window.addEventListener('scroll', scrollHandler);
+    }
     }
     
     // Usage:
@@ -216,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            smoothScrollTo(targetId, 1000); // Set duration in milliseconds
+            smoothScrollTo(targetId, 1500); // Set duration in milliseconds
         });
     });
     
