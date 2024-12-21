@@ -48,36 +48,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroContent = heroCover.querySelector('.hero-cover-content');
     const fixedHeader = document.getElementById('fixed-header');
     
-    // Initial state
     fixedHeader.style.opacity = '0';
-
+    
     function updateHeaderTransformation() {
-        // Get scroll position and viewport height
         const scrollPosition = window.scrollY;
         const viewportHeight = window.innerHeight;
         
-        // Calculate progress (0 to 1)
         const progress = Math.min(scrollPosition / viewportHeight, 1);
-        fixedHeader.style.display = 'block'; // Ensure it's not 'none'
-        fixedHeader.style.visibility = 'visible'; // Ensure it's not 'hidden'
-        // Show/hide  header
-        fixedHeader.style.opacity = progress*2;
         
-        // Transform hero cover based on scroll progress
-        const scaleValue = 1 - (progress * 0.3); // Scale from 1 to 0.7
-        const heightValue = 100 - (progress * 80); // Height from 100vh to 80px
+        fixedHeader.style.display = 'block';
+        fixedHeader.style.visibility = 'visible';
         
-        // Apply transformations
+        const scaleValue = Math.max(0.8, 1 - progress * 0.2); // Minimum scale = 0.7
+        // const heightValue = Math.max(30, 100 - (progress * 70)); // Height from 100vh to minimum 20vh
+        const heightValue = 100 - progress * 80;
+        // Apply hero cover transformations
         heroCover.style.transform = `scale(${scaleValue})`;
-        heroCover.style.opacity = 1 - progress;
         heroCover.style.height = `${heightValue}vh`;
+        heroCover.style.opacity = Math.max(0, 1 - progress);
+        
+        // Apply fixed header transformations
+        fixedHeader.style.opacity = Math.min(1, progress *10);
+        fixedHeader.style.transform = `translateY(-${(1 - 0.1*progress) * 1}px) scale(${0.9 + progress * 0.1})`;
         
         // Transform hero content
         heroContent.style.transform = `scale(${1 - progress * 0.5})`;
-        heroContent.style.transform = `scale(${1 - progress * 0.5})`;
-        heroContent.style.opacity = 1 - progress;
+        heroContent.style.opacity = Math.max(0, 1 - progress);
+        const heroSpacer = document.createElement('div');
+        heroSpacer.className = 'hero-spacer';
+        heroCover.after(heroSpacer);
+        
+        const headerHeight = fixedHeader.querySelector('.header-container').offsetHeight;
     }
-
+    
     // Add scroll event listener with requestAnimationFrame for smooth animation
     let ticking = false;
     
@@ -93,14 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial call to set correct state
     updateHeaderTransformation();
-    });
-    let timer;
-    window.addEventListener('scroll', () => {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            console.log('Scroll event triggered!');
-        }, 100);
-    });
+        // Initial call to set correct state
+        updateHeaderTransformation();
+        });
+        let timer;
+        window.addEventListener('scroll', () => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                console.log('Scroll event triggered!');
+            }, 100);
+        });
 
 
     // Optional: Existing smooth scrolling functionality
