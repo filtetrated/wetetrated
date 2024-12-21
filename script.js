@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Apply fixed header transformations
         fixedHeader.style.opacity = Math.min(1, progress *10);
-        fixedHeader.style.transform = `translateY(-${(1 - 0.1*progress) * 1}px) scale(${0.9 + progress * 0.1})`;
+        fixedHeader.style.transform = `translateY(-${(1 - 1*progress) * 1}px) scale(${0.9 + progress * 0.1})`;
         
         // Transform hero content
         heroContent.style.transform = `scale(${1 - progress * 0.5})`;
@@ -279,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             smoothScrollTo(targetId, 1500); // Set duration in milliseconds
+            rotate()
         });
     });
     
@@ -303,8 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 ;
 
-// Optional: Performance Tracking
-window.addEventListener('load', () => {
+    // Optional: Performance Tracking
+    window.addEventListener('load', () => {
     console.log('Page fully loaded');
     
     // Measure and log performance

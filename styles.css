@@ -1,4 +1,6 @@
-
+html {
+    scroll-padding-top:500px;
+}
 /* Reset and Base Styles */
 *, *::before, *::after {
     margin: 0;
@@ -509,7 +511,7 @@ input[type=text]:focus, [type=email]:focus, #message:focus {
 /* Fixed Header Styles */
 .fixed-header {
     position: fixed;
-    top: 10px;
+    top: 0px;
     left: 0;
     width: 100%;
     background-color: var(--white);
@@ -536,7 +538,7 @@ input[type=text]:focus, [type=email]:focus, #message:focus {
 
 /* Ensure first content section has top padding */
 #about {
-    padding-top: 200px;
+    scroll-padding-top: -100px;
 }
 
 .outer-section {
