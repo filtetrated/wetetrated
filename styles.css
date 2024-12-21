@@ -245,6 +245,7 @@ body {
 .testimonial-carousel {
     display: flex;
     justify-content: center;
+    min-height:200px;
 }
 
 .testimonial {
@@ -253,6 +254,31 @@ body {
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position:absolute; 
+    width: 100%;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 1s ease-in-out;
+
+}
+.testimonial.show {
+    opacity: 1;
+    transform: translateY(0);
+    position:relative;
+}
+.testimonial.hide {
+    opacity: 0;
+    position:absolute;
+    transform: translateY(-100%);
+}
+.testimonial > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:all 1s ease-out;
+}
+.testimonial.show > *{
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .testimonial blockquote {
@@ -526,5 +552,5 @@ input[type=text]:focus, [type=email]:focus, #message:focus {
 }
 
 .blue-box:hover {
-    transform:rotate(-90deg);
+    transform:translateX(-100%);
 }

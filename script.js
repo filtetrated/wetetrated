@@ -118,29 +118,58 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    // Testimonial Carousel
     const testimonials = document.querySelectorAll('.testimonial');
     let currentTestimonial = 0;
+    let isAnimating = false;
+    let intervalId = null;  // Declare intervalId only once at the top level
 
     function rotateTestimonials() {
-        // Hide all testimonials
-        testimonials.forEach(testimonial => {
-            testimonial.style.display = 'none';
-        });
+        if (isAnimating) return;
+        isAnimating = true;
 
-        // Show current testimonial
-        testimonials[currentTestimonial].style.display = 'block';
+        // Add hide class to current testimonial
+        testimonials[currentTestimonial].classList.add('hide');
+        testimonials[currentTestimonial].classList.remove('show');
 
-        // Move to next testimonial
+        // Calculate next testimonial
         currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+
+        // Wait for hide animation to complete
+        setTimeout(() => {
+            // Remove all classes
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('hide');
+                testimonial.classList.remove('show');
+            });
+            
+            // Show next testimonial
+            testimonials[currentTestimonial].classList.add('show');
+            isAnimating = false;
+        }, 1000); // Match this with CSS transition duration
     }
 
     // Initial setup
     if (testimonials.length > 0) {
-        rotateTestimonials();
-        // Rotate every 5 seconds
-        setInterval(rotateTestimonials, 5000);
+        // Show first testimonial
+        testimonials[0].classList.add('show');
+        
+        // Start rotation
+        intervalId = setInterval(rotateTestimonials, 5000);
     }
+    testimonials.forEach(testimonial => {
+        testimonial.addEventListener('mouseenter', () => {
+            if (testimonial.classList.contains('show') && intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        });
+    
+        testimonial.addEventListener('mouseleave', () => {
+            if (!intervalId) {
+                intervalId = setInterval(rotateTestimonials, 5000);
+            }
+        });
+});
 
     // Form Validation and Submission
     const contactForm = document.querySelector('.contact-form');
