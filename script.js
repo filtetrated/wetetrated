@@ -1,3 +1,14 @@
+function rotate() {
+    console.log("rotate function executed");
+    var hamburgerIcon = document.getElementById("your-mum");
+    
+    if (hamburgerIcon.style.transform ==="rotate(-90deg)") {
+        hamburgerIcon.style.transform = "rotate(0deg)";
+    } else {
+        hamburgerIcon.style.transform = "rotate(-90deg)";
+    }
+    hamburgerIcon.style.transition = "transform 1s linear";
+}
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -11,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         });
     }
-
     // Smooth Scrolling for Navigation Links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
