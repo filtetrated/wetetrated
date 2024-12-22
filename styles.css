@@ -33,6 +33,14 @@ body {
     background-color: var(--background-color);
 }
 
+.observerhidden {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.observershown {
+    opacity: 1; 
+}
 
 .header-container {
     display: flex;
@@ -87,6 +95,7 @@ body {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--white);
     text-align: center;
+    
 }
 .hero h1 {
     font-size: 3rem;
@@ -447,9 +456,10 @@ input[type=text]:focus, [type=email]:focus, #message:focus {
         font-size: 0.9rem;
         font-family:var(--font-primary);
         font-weight:500;
-        transition: 1s ease-in-out; 
+        transition: 0.3s ease-in-out; 
     }
     .mobile-nav-toggle .hamburger-icon:hover{
+        transition: 0.1s ease-in-out;
         transform: rotate(-90deg);
     }
     .nav-menu {
@@ -516,8 +526,9 @@ input[type=text]:focus, [type=email]:focus, #message:focus {
     width: 100%;
     background-color: var(--white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.1s ease-out;
-    /* transform: translateY(); */
+    transform: translateX(-50%) scaleX(0.5); /* Center horizontally and set initial scale */
+    transform-origin: center;
+    transition: all 0.3s ease-out;
     opacity: 0;
     z-index: 10;
     transform-origin: top center;

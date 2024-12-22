@@ -10,7 +10,20 @@ function rotate() {
     hamburgerIcon.style.transition = "transform 1s linear";
 }
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Navigation Toggle
+    // view listener elements nice fade in animation 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting) {
+                entry.target.classList.add("observershown");
+            }
+        });
+    });
+    
+    const watchmeElements = document.querySelectorAll(".observerhidden")
+    watchmeElements.forEach((el) => observer.observe(el));
+    
+
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -49,39 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const fixedHeader = document.getElementById('fixed-header');
     
     fixedHeader.style.opacity = '0';
-    
     function updateHeaderTransformation() {
         const scrollPosition = window.scrollY;
         const viewportHeight = window.innerHeight;
-        
         const progress = Math.min(scrollPosition / viewportHeight, 1);
-        
-        fixedHeader.style.display = 'block';
-        fixedHeader.style.visibility = 'visible';
-        
-        const scaleValue = Math.max(0.8, 1 - progress * 0.2); // Minimum scale = 0.7
-        // const heightValue = Math.max(30, 100 - (progress * 70)); // Height from 100vh to minimum 20vh
-        const heightValue = 100 - progress * 80;
-        // Apply hero cover transformations
-        heroCover.style.transform = `scale(${scaleValue})`;
-        heroCover.style.height = `${heightValue}vh`;
-        heroCover.style.opacity = Math.max(0, 1 - progress);
-        
-        // Apply fixed header transformations
-        fixedHeader.style.opacity = Math.min(1, progress *10);
-        fixedHeader.style.transform = `translateY(-${(1 - 1*progress) * 1}px) scale(${0.9 + progress * 0.1})`;
-        
-        // Transform hero content
-        heroContent.style.transform = `scale(${1 - progress * 0.5})`;
-        heroContent.style.opacity = Math.max(0, 1 - progress);
-        const heroSpacer = document.createElement('div');
-        heroSpacer.className = 'hero-spacer';
-        heroCover.after(heroSpacer);
-        
-        const headerHeight = fixedHeader.querySelector('.header-container').offsetHeight;
-    }
+        fixedHeader.style.opacity = progress;
     
-    // Add scroll event listener with requestAnimationFrame for smooth animation
+        // fixedHeader.style.transform = `translateY(${Math.max(0, 1 * progress)}px) scale(1)`;
+        const scaleXValue = 0.5 + progress * 0.5; // ScaleX from 0.5 to 1
+        const translateYValue = Math.max(0,(1-progress)*50); // Move up slightly
+    
+        fixedHeader.style.transform = `translateY(${translateYValue}px) scaleX(${scaleXValue})`;
+        
+        heroCover.style.transform = `scale(${1 - 0.3 * progress})`;
+        heroCover.style.opacity = 1 - progress;
+    }
     let ticking = false;
     
     window.addEventListener('scroll', () => {
