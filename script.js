@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(entry)
             if (entry.isIntersecting) {
                 entry.target.classList.add("observershown");
+                // entry.target.classList.remove("oberverhidden");
             }
         });
     });

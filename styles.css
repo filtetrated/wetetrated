@@ -33,15 +33,39 @@ body {
     background-color: var(--background-color);
 }
 
-.observerhidden {
+.observerhidden.hero-cover-content {
     opacity: 0;
-    transition: all 1s;
+    transform: translateY(20px);
+    transition: all 1s ease-in-out;
 }
 
-.observershown {
+.observershown.hero-cover-content  {
     opacity: 1; 
+    transform: translateY(0);
+
+}
+.observerhidden:not(.hero-cover-content) {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 1.5s ease-in-out;
+    filter:blur(5px);
 }
 
+.observershown:not(.hero-cover-content) {
+    opacity: 1; 
+    transform: translateX(0);
+    filter: blur(0);
+
+}
+.service-card:nth-child(1) {
+    transition-delay: 200ms;
+}
+.service-card:nth-child(2) {
+    transition-delay: 400ms;
+}
+.service-card:nth-child(3) {
+    transition-delay: 600ms;
+}
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -191,11 +215,12 @@ body {
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    /* transition: transform 0.3s ease-in-out; */
 }
 
 .service-card:hover {
     transform: translateY(-10px);
+    transition: transform 0.3s ease-in-out;
 }
 
 .service-card h3 {
@@ -280,7 +305,7 @@ body {
 }
 .testimonial.hide {
     opacity: 0;
-    position:absolute;
+    position:relative;
     transform: translateY(-100%);
 }
 .testimonial > * {
