@@ -58,10 +58,10 @@ body {
 
 }
 .service-card:nth-child(1) {
-    transition-delay: 200ms;
+    transition-delay: 000ms;
 }
 .service-card:nth-child(2) {
-    transition-delay: 400ms;
+    transition-delay: 300ms;
 }
 .service-card:nth-child(3) {
     transition-delay: 600ms;
@@ -215,12 +215,13 @@ body {
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    /* transition: transform 0.3s ease-in-out; */
+    transform: translateY(0);
+    transition: all 1s ease;
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
 }
 
 .service-card h3 {

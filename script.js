@@ -7,7 +7,7 @@ function rotate() {
     } else {
         hamburgerIcon.style.transform = "rotate(-90deg)";
     }
-    hamburgerIcon.style.transition = "transform 1s linear";
+    hamburgerIcon.style.transition = "transform 0.7s linear";
 }
 document.addEventListener('DOMContentLoaded', () => {
     // view listener elements nice fade in animation 
@@ -17,8 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("observershown");
                 // entry.target.classList.remove("oberverhidden");
+                setTimeout(() => {
+                    entry.target.classList.remove("observerhidden");
+                    entry.target.classList.remove("observershown");
+                }, 2000); // Match this to your observer transition duration
             }
-        });
+            }
+        );
     });
     
     const watchmeElements = document.querySelectorAll(".observerhidden")
