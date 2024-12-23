@@ -572,25 +572,44 @@ input[type=text], [type=email], #message {
         transform: rotate(-90deg);
     }
     .nav-menu {
-        display: none;
+        display: block;
+        visibility: none;
+        position: fixed;
+        align-items: center;
         flex-direction: column;
-        position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
+        height:0;
+        overflow: hidden;
         background-color: var(--white);
+        pointer-events: none;
+        transition: all 1s ease;
+        opacity: 0;
     }
-
     .nav-menu.show {
         display: flex;
+        visibility: visible;
         flex-direction: column;
         align-items: center;
+        height: fit-content;
+        pointer-events: auto;
+        opacity: 1;
     }
-
-    .nav-menu li {
+    .nav-li {
+        position: absolute;
         margin: 10px 0;
         text-align: center;
+        opacity:0;
+        transition: opacity 1s ease-in-out;
+        /* transform: translateY(0); */
     }
+    .nav-menu.show .nav-li {
+        /* transform: translateY(100px); */
+        position: relative;
+        opacity:1;
+    }
+    
 }
 
 /* Hero Cover Specific Styles */
@@ -658,11 +677,10 @@ input[type=text], [type=email], #message {
     transform: scale(0.8);
 }
 
-/* Ensure first content section has top padding */
 #about {
     scroll-padding-top: -100px;
 }
-
+/* NUCLEAR PLAYGROUND */
 .outer-section {
     width: 100%;
     height: 1200px;
@@ -677,7 +695,25 @@ input[type=text], [type=email], #message {
     background-color: #764ba2;
     transition:ease-in-out 1s;
 }
-
+/* 
 .blue-box:hover {
     transform:translateX(-100%);
 }
+.chad {
+    background-color: transparent;
+    border: none;
+}
+.chad:hover {
+    cursor: pointer;
+}
+.alpha {
+    opacity:0.3;
+    transform: translateY(0);
+    transition:all 0.5s ease;
+    
+}
+
+.navigation:hover {
+    opacity: 1;
+    transform: translateY(-100px);
+} */
