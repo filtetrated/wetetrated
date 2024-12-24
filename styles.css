@@ -430,6 +430,7 @@ body {
     font-weight: 600;
 }
 
+
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -437,7 +438,10 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;    
 }
-
+.form-group input:active,
+.form-group textarea:active {
+    border: 1px solid var(--input-border)
+}
 .form-group textarea {
     height: 150px;
     resize: none;
@@ -592,7 +596,7 @@ input[type=text], [type=email], #message {
         visibility: visible;
         flex-direction: column;
         align-items: center;
-        height: fit-content;
+        height: fit-content ;
         pointer-events: auto;
         opacity: 1;
     }
