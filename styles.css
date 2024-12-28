@@ -453,10 +453,11 @@ input[type=text], [type=email], #message {
     font-size: 16px;
 
 }
-/* input[type=text]:focus, [type=email]:focus, #message:focus {
+input[type=text]:focus, [type=email]:focus, #message:focus {
     border: 2px solid var(--secondary-color);
+    outline:none;
 
-} */
+}
 .submit-button {
     display: block;
     width: 100%;
